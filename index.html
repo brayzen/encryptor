@@ -1,70 +1,32 @@
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8">
     <title>Document</title>
+    <style>
+      .decoder {
+        display: ;
+      }
+      .encoder {
+        display:;
+      }
+    </style>
   </head>
   <body>
-    <h1>Message Encoder</h1>
-    <p>This simple page lets you securely encrypt a message with a password. Your message will not leave your computer, and will not be sent over the Internet.</p>
-    <p>Once it's encoded, you'll be able to share your message with anyone else who has the password.</p>
-    <textarea id="message" rows="6" cols="60"></textarea>
+    <h1 class='encoder'>Message Encoder</h1>
+
+    <p class='encoder'>This simple page lets you securely encrypt a message with a password. Your message will not leave your computer, and will not be sent over the Internet.</p>
+
+    <p class= 'encoder'>Once it's encoded, you'll be able to share your message with anyone else who has the password.</p>
+    <textarea class="encoder" id="message" rows="6" cols="60"></textarea>
     <br>
-    <button id="encrypt">Lock Down</button>
+    <button class='encoder' id="encrypt">Lock Down</button>
+
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 
     <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/aes.js"></script>
+    <script src="./js/encode.js"></script>
 
-    <script>
-      var encoder = {
-        setMessage: function() {
-           this.message = document.getElementById('message').value;
-        },
 
-        getPassword: function() {
-          //UPON CLICK OF 'LOCK DOWN'
-          this.password = window.prompt('What is the password');
-        },
-        setUrl: function() {
-          //UPON CLICK OF 'CONFIRM'\
-          var currentURL = window.location.href;
-          this.newURL = new URL(this.encrypt, currentURL)
-          // console.log(this.newURL)
-        },
-        replaceMessageWithUrl: function () {
-          newMessage = this.newURL;
-          document.getElementById('message').value = ('Your message has been encrypted below, feel free to share with anyone who has the password:\n\n' + newMessage);
-          var button = document.getElementById('encrypt');
-          console.log(button.value);
-
-        },
-        encrypt: function() {
-          cypher = CryptoJS.AES.encrypt(this.message, this.password)
-          console.log("Verified: " +
-            CryptoJS.AES.decrypt(cypher, this.password).toString(CryptoJS.enc.Utf8))
-          return cypher
-        },
-        protect: function() {
-          // console.log(this);
-          this.setMessage();
-          this.getPassword();
-          this.setUrl();
-          this.replaceMessageWithUrl();
-        }
-      }
-      document.getElementById('encrypt').onclick = encoder.protect.bind(encoder);
-      // document.getElementById('encrypt').onclick = function(){
-      //   encoder.protect();
-      // }
-      // encrypt_button = {
-      //   id:
-      //   x:
-      //   y:
-      //   class:
-      //   onclick: encoder.protect
-      // }
-
-      // encrypt_button.onlick() = encoder.protect()
-    // console.log(this);
-
-    </script>
   </body>
 </html>
